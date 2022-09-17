@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
-* Студент: [Евгений Матвеев](https://up.htmlacademy.ru/univer-js1/1/user/2221571).
-* Наставник: [Владимир Шишлянников](https://htmlacademy.ru/profile/id1082173).
+* Студент: [Матвеев Евгений](https://up.htmlacademy.ru/univer-js1/1/user/2221571).
+* Наставник: [Шишлянников Владимир](https://htmlacademy.ru/profile/id1082173).
 
 ---
 
