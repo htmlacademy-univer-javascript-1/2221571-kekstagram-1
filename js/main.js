@@ -3,6 +3,7 @@ function checkMaximumStringLength(originalString, maxLength) {
   return originalString.length <= maxLength;
 }
 
+
 // eslint-disable-next-line no-unused-vars
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
