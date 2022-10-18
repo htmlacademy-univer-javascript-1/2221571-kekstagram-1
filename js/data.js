@@ -1,5 +1,7 @@
 import { getRandomIntInclusive } from './util.js';
 
+const amount = 25;
+
 const NAMES = [
   'Аарон',
   'Аврора',
@@ -21,9 +23,10 @@ const MESSAGES = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
-// eslint-disable-next-line no-unused-vars
-function getAllData(amount) {
-  const allData = [];
+const allData = [];
+
+
+function getAllData() {
 
   for (let index = 0; index < amount; index++) {
     allData[index] = {
@@ -37,7 +40,7 @@ function getAllData(amount) {
   return allData;
 }
 
-function getComments(amount) {
+function getComments() {
   const commentsData = [];
 
   for (let index = 0; index < amount; index++) {
@@ -52,4 +55,6 @@ function getComments(amount) {
   return commentsData;
 }
 
+getAllData();
+export {allData};
 export {NAMES, MESSAGES, getAllData, getComments};
