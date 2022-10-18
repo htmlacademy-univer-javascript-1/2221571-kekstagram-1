@@ -1,6 +1,5 @@
-import {
-  allData
-} from './data.js';
+import { allData } from './data.js';
+
 const popup = document.querySelector('.big-picture');
 const pictures = document.querySelectorAll('.picture');
 const closeButton = document.querySelector('.big-picture__cancel');
