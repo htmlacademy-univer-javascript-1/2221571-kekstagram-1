@@ -11,4 +11,6 @@ function checkMaximumStringLength(originalString, maxLength) {
   return originalString.length <= maxLength;
 }
 
-export { getRandomIntInclusive, checkMaximumStringLength };
+const isEscape = (evt) => evt.key === 'Escape';
+
+export { getRandomIntInclusive, checkMaximumStringLength, isEscape};
