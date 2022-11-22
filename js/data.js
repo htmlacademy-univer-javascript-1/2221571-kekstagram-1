@@ -56,5 +56,4 @@ function getComments() {
 }
 
 getAllData();
-export { allData };
-export { NAMES, MESSAGES, getAllData, getComments };
+export { allData, NAMES, MESSAGES, getAllData, getComments };
