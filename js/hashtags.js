@@ -21,13 +21,13 @@ const error = () => errorMessage;
 const hashtagsHandler = (value) => {
   errorMessage = '';
   const text = value.toLowerCase().trim();
-  if (!text){
+  if(!text) {
     return true;
   }
 
   const input = text.split(/\s+/);
 
-  if(input.legth === 0){
+  if(input.legth === 0) {
     return true;
   }
 
@@ -37,11 +37,11 @@ const hashtagsHandler = (value) => {
       error: 'Хэш-теги разделяются пробелами',
     },
     {
-      check: input.some((item) => item[0] !=='#'),
+      check: input.some((item) => item[0] !== '#'),
       error: 'Хэш-тек должен начинается с #',
     },
     {
-      check: input.some((item, num, arr) => arr.includes(item, num +1)),
+      check: input.some((item, num, arr) => arr.includes(item, num + 1)),
       error: 'Хэш-тег не должен повторяться',
     },
     {
@@ -57,9 +57,9 @@ const hashtagsHandler = (value) => {
       error: 'Хеш-тег содержит недопустимые символы ',
     },
   ];
-  return rules.every((rule) =>{
+  return rules.every((rule) => {
     const isInvalid = rule.check;
-    if(isInvalid){
+    if(isInvalid) {
       errorMessage = rule.error;
     }
     return !isInvalid;
@@ -72,12 +72,11 @@ pristine.addValidator(hashtags, hashtagsHandler, error, 2, false);
 hashtags.addEventListener('input', () => {
   if(pristine.validate()) {
     button.disabled = false;
-  }
-  else{
+  } else {
     button.disabled = true;
   }
 });
-form.addEventListener('submit', (evt) =>{
+form.addEventListener('submit', (evt) => {
   evt.preventDefault();
 
   pristine.validate();
