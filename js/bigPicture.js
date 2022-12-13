@@ -18,23 +18,24 @@ const showCom = commentsCount.querySelector('.showCount');
 showCom.textContent = COMMENTS_COUNT;
 
 const onDocumentEscKeyDown = (evt) => {
-  if(isEscape(evt) && !evt.target.classList.contains('big-picture')) {
+  if (isEscape(evt) && !evt.target.classList.contains('big-picture')) {
     popup.classList.add('hidden');
     document.querySelector('body').classList.remove('modal-open');
     document.removeEventListener('keydown', onDocumentEscKeyDown);
+    currentCount = COMMENTS_COUNT;
   }
 };
 
 const onUpdateMoreClick = () => {
 
-  if(currentCount >= arrayLi.length) {
+  if (currentCount >= arrayLi.length) {
     currentCount = arrayLi.length;
     updateMore.classList.add('hidden');
   }
 
   const currentComments = arrayLi.slice(0, currentCount);
 
-  for(let i = 0; i < currentComments.length; i++) {
+  for (let i = 0; i < currentComments.length; i++) {
     currentComments[i].classList.remove('hidden');
   }
 
@@ -42,11 +43,10 @@ const onUpdateMoreClick = () => {
   currentCount += COMMENTS_COUNT;
 };
 
-
 const addComments = (comments, array) => {
   array.length = 0;
   commentAbout.innerHTML = '';
-  for(let i = 0; i < comments.length; i++) {
+  for (let i = 0; i < comments.length; i++) {
 
     const newElement = commentCopy.cloneNode(true);
 
@@ -58,7 +58,7 @@ const addComments = (comments, array) => {
     commentAbout.appendChild(newElement);
   }
 
-  for(let z = COMMENTS_COUNT; z < arrayLi.length; z++) {
+  for (let z = COMMENTS_COUNT; z < arrayLi.length; z++) {
     arrayLi[z].classList.add('hidden');
   }
 
@@ -88,7 +88,7 @@ const showBigPictures = (photo) => {
 
   addComments(photo.comments, arrayLi);
 
-  if(photo.comments.length <= 5) {
+  if (photo.comments.length <= 5) {
     showCom.textContent = photo.comments.length;
     updateMore.classList.add('hidden');
   } else {
@@ -99,7 +99,6 @@ const showBigPictures = (photo) => {
   document.querySelector('body').classList.add('modal-open');
 };
 
-
 closeButton.addEventListener('click', () => {
   popup.classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
@@ -108,6 +107,5 @@ closeButton.addEventListener('click', () => {
   arrayLi.length = 0;
   updateMore.removeEventListener('click', onUpdateMoreClick);
 });
-
 
 export { showBigPictures };

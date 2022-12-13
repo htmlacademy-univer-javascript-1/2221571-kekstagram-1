@@ -1,10 +1,9 @@
-
 const ALERT_SHOW_TIME = 5000;
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  if(min < max) {
+  if (min < max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   return 'неверно введённые данные';
@@ -38,6 +37,44 @@ const showAlert = (message) => {
   }, ALERT_SHOW_TIME);
 };
 
-export { getRandomIntInclusive, checkMaximumStringLength, isEscape, showAlert };
+const mixArray = (array) => {
+  for (let one = array.length - 1; one > 0; one--) {
+    const two = getRandomIntInclusive(0, one);
+    [array[one], array[two]] = [array[two], array[one]];
+  }
+  return array;
+};
 
+const debounce = (callback, timeoutDelay = 500) => {
 
+  let timeoutId;
+
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+const throttle = (callback, delayBetweenFrames) => {
+
+  let lastTime = 0;
+
+  return (...rest) => {
+
+    const now = new Date();
+    if (now - lastTime >= delayBetweenFrames) {
+      callback.apply(this, rest);
+      lastTime = now;
+    }
+  };
+};
+
+export {
+  getRandomIntInclusive,
+  isEscape,
+  showAlert,
+  debounce,
+  throttle,
+  mixArray,
+  checkMaximumStringLength
+};
