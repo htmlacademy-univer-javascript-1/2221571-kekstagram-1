@@ -1,10 +1,9 @@
-
 const ALERT_SHOW_TIME = 5000;
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  if(min < max) {
+  if (min < max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   return 'неверно введённые данные';
@@ -38,6 +37,9 @@ const showAlert = (message) => {
   }, ALERT_SHOW_TIME);
 };
 
-export { getRandomIntInclusive, checkMaximumStringLength, isEscape, showAlert };
-
-
+export {
+  getRandomIntInclusive,
+  checkMaximumStringLength,
+  isEscape,
+  showAlert
+};
