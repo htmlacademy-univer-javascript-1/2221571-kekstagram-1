@@ -25,10 +25,9 @@ const MESSAGES = [
 
 const allData = [];
 
-
 function getAllData() {
 
-  for(let index = 0; index < amount; index++) {
+  for (let index = 0; index < amount; index++) {
     allData[index] = {
       id: index + 1,
       url: `photos/${index + 1}.jpg`,
@@ -43,7 +42,7 @@ function getAllData() {
 function getComments() {
   const commentsData = [];
 
-  for(let index = 0; index < amount; index++) {
+  for (let index = 0; index < amount; index++) {
     commentsData[index] = {
       id: index + 1,
       avatar: `img/avatar-${getRandomIntInclusive(1, 6)}.svg`,
@@ -56,4 +55,11 @@ function getComments() {
 }
 
 getAllData();
-export { allData, NAMES, MESSAGES, getAllData, getComments };
+
+export {
+  allData,
+  NAMES,
+  MESSAGES,
+  getAllData,
+  getComments
+};
