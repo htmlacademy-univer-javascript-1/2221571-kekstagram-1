@@ -2,9 +2,9 @@ import { sendRequest } from './server.js';
 import { showAlert } from './util.js';
 import { isEscape } from './util.js';
 import { restartForm } from './formUpload.js';
+
 const MAX_SYMBOLS = 20;
 const MAX_HASHTAGS = 5;
-
 
 const form = document.querySelector('.img-upload__form');
 const button = document.querySelector('.img-upload__submit');
@@ -12,7 +12,6 @@ const successMessage = document.querySelector('#success').content.querySelector(
 const errorMessage = document.querySelector('#error').content.querySelector('.error');
 const newFragment = document.createDocumentFragment();
 const mes = document.querySelector('.message');
-
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__item',
@@ -31,13 +30,13 @@ const error = () => errorMessages;
 const hashtagsHandler = (value) => {
   errorMessages = '';
   const text = value.toLowerCase().trim();
-  if (!text){
+  if (!text) {
     return true;
   }
 
   const input = text.split(/\s+/);
 
-  if(input.legth === 0){
+  if (input.legth === 0) {
     return true;
   }
 
@@ -47,11 +46,11 @@ const hashtagsHandler = (value) => {
       error: 'Хэш-теги разделяются пробелами',
     },
     {
-      check: input.some((item) => item[0] !=='#'),
+      check: input.some((item) => item[0] !== '#'),
       error: 'Хэш-тек должен начинается с #',
     },
     {
-      check: input.some((item, num, arr) => arr.includes(item, num +1)),
+      check: input.some((item, num, arr) => arr.includes(item, num + 1)),
       error: 'Хэш-тег не должен повторяться',
     },
     {
@@ -67,9 +66,9 @@ const hashtagsHandler = (value) => {
       error: 'Хеш-тег содержит недопустимые символы ',
     },
   ];
-  return rules.every((rule) =>{
+  return rules.every((rule) => {
     const isInvalid = rule.check;
-    if(isInvalid){
+    if (isInvalid) {
       errorMessages = rule.error;
     }
     return !isInvalid;
@@ -84,28 +83,28 @@ hashtags.addEventListener('input', () => {
 });
 
 const removeMessage = () => {
-  if(mes.querySelector('.success')){
+  if (mes.querySelector('.success')) {
     mes.querySelector('.success').remove();
     restartForm();
   }
-  if(mes.querySelector('.error')){
+  if (mes.querySelector('.error')) {
     document.querySelector('.error_message').remove();
   }
 
 };
 
 const onEscapeMes = (evt) => {
-  if(isEscape(evt)) {
+  if (isEscape(evt)) {
     removeMessage();
     document.removeEventListener('keydown', onEscapeMes);
   }
 };
 
-const onWindowClick = (evt) =>{
+const onWindowClick = (evt) => {
   const windowMes = mes.querySelector('.success__inner');
   const withinBoundaries = evt.composedPath().includes(windowMes);
 
-  if(!withinBoundaries){
+  if (!withinBoundaries) {
     removeMessage();
     document.removeEventListener('keydown', onWindowClick);
   }
@@ -128,7 +127,7 @@ const doErrorMessage = () => {
   but.addEventListener('click', removeMessage);
 };
 
-const doMessage = (createMes) =>{
+const doMessage = (createMes) => {
   document.querySelector('.img-upload__overlay').classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
 
@@ -143,16 +142,15 @@ const onSuccess = () => {
   doMessage(doSuccessMessage);
 };
 
-const onFail = (err) =>{
+const onFail = (err) => {
   showAlert(err);
   doMessage(doErrorMessage);
 };
 
 const method = 'POST';
 
-
-form.addEventListener('submit', (evt) =>{
+form.addEventListener('submit', (evt) => {
   evt.preventDefault();
   button.disabled = true;
-  sendRequest(onSuccess, onFail, method,new FormData(form) );
+  sendRequest(onSuccess, onFail, method, new FormData(form));
 });

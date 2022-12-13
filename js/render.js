@@ -1,9 +1,8 @@
 import { showBigPictures } from './BigPicture.js';
-const picture = document.querySelector('.pictures');
 
+const picture = document.querySelector('.pictures');
 const template = document.querySelector('#picture').content;
 const templatePictures = template.querySelector('.picture');
-
 const newFragment = document.createDocumentFragment();
 
 const renderPhoto = (photo) => {
@@ -13,7 +12,7 @@ const renderPhoto = (photo) => {
   item.querySelector('.picture__likes').textContent = photo.likes;
   item.querySelector('.picture__comments').textContent = photo.comments.length;
 
-  item.addEventListener('click', (evt) =>{
+  item.addEventListener('click', (evt) => {
     evt.preventDefault();
     showBigPictures(photo);
   });
@@ -28,4 +27,4 @@ const renderPhotos = (photos) => {
   picture.appendChild(newFragment);
 };
 
-export {renderPhotos};
+export { renderPhotos };

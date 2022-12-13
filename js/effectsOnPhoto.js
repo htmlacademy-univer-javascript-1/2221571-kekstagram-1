@@ -1,6 +1,6 @@
 import { imageUpload } from './formUpload.js';
 
-const START_EFFECT  = 'none';
+const START_EFFECT = 'none';
 
 const effects = document.querySelector('.effects__list');
 const slider = document.querySelector('.img-upload__effect-level');
@@ -29,7 +29,7 @@ const reSlider = (effect) => {
   let nameOfEffect = '';
   let type = '';
 
-  switch(effect){
+  switch (effect) {
     case 'chrome':
       nameOfEffect = 'grayscale';
       break;
@@ -76,12 +76,11 @@ const takeEffect = (effect) => {
   imageUpload.classList.remove(`effects__preview--${nowEffect}`);
   imageUpload.classList.add(`effects__preview--${effect}`);
 
-  if (effect === 'none'){
+  if (effect === 'none') {
     slider.disabled = false;
     slider.classList.add('hidden');
     imageUpload.style.filter = '';
-  }
-  else{
+  } else {
     nowEffect = effect;
     slider.removeAttribute('disabled');
     slider.classList.remove('hidden');
@@ -90,13 +89,13 @@ const takeEffect = (effect) => {
 };
 
 const addEffect = (evt) => {
-  if(evt.target.name === 'effect') {
+  if (evt.target.name === 'effect') {
     takeEffect(evt.target.value);
   }
 };
 const restartEffects = () => {
   slider.classList.add('hidden');
-  effects.removeEventListener('click',addEffect);
+  effects.removeEventListener('click', addEffect);
   imageUpload.removeAttribute('class');
   slider.noUiSlider.updateOptions({
     range: {
